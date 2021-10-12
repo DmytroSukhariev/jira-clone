@@ -9,11 +9,11 @@ import { LoadingEntitiesState } from "state/types/utils";
 
 import { getNextStatus } from "./tasks.utils";
 
-export type TaskState = LoadingEntitiesState<Task>;
+export type TasksState = LoadingEntitiesState<Task>;
 
 const tasksSliceName = "tasks";
 
-const initialState: TaskState = {
+const initialState: TasksState = {
   loading: true,
   entities: {},
 };
@@ -37,8 +37,8 @@ const tasksSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(
       fetchTasks.fulfilled,
-      (state: TaskState, { payload }: PayloadAction<Array<Task>>) => {
-        payload.forEach((task) => {
+      (state: TasksState, { payload: tasks }: PayloadAction<Array<Task>>) => {
+        tasks.forEach((task) => {
           state.entities[task.id] = task;
         });
         state.loading = false;

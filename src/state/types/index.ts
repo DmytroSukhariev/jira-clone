@@ -1,12 +1,14 @@
 import { Action, ThunkAction } from "@reduxjs/toolkit";
 import type { store } from "state/store";
 
-import type { TaskState } from "state/slices/tasks";
+import type { TasksState } from "state/slices/tasks";
+import type { UsersState } from "state/slices/users";
 
 export * from "./utils";
 
 export type RootState = {
-  tasks: TaskState;
+  tasks: TasksState;
+  users: UsersState;
 };
 
 export type AppDispatch = typeof store.dispatch;

@@ -4,17 +4,19 @@ import { AnyAction } from "@reduxjs/toolkit";
 import { getAllTasks } from "apis/jsonplaceholder";
 import { store } from "state";
 import { Id, Status, Task } from "types";
+import { RootState } from "state/types";
 
 import {
   fetchTasks,
   setNextTaskState,
   tasksReducer,
-  TaskState,
+  TasksState,
 } from "./tasks.slice";
 import {
   selectAllTasks,
   selectTaskById,
   selectTasksWithStatus,
+  selectTasksLoading,
 } from "./tasts.selectors";
 import { getNextStatus } from "./tasks.utils";
 import * as tasksUtils from "./tasks.utils";
@@ -44,12 +46,12 @@ describe("State", () => {
       },
     ];
 
-    const getMockedInitialState = (): TaskState => ({
+    const getMockedInitialState = (): TasksState => ({
       entities: {},
       loading: true,
     });
 
-    const getMockedLoadedState = (): TaskState => {
+    const getMockedLoadedState = (): TasksState => {
       const initialState = getMockedInitialState();
       initialState.entities = _.keyBy(
         getMockedGetAllTasksResponse(),
@@ -90,7 +92,7 @@ describe("State", () => {
       });
 
       describe("Change status", () => {
-        let mockedState: TaskState;
+        let mockedState: TasksState;
         let taskId: Id;
         let getNextStatusSpy: jest.SpyInstance;
         const mockedStatus = "STATUS MOCK" as Status;
@@ -168,7 +170,7 @@ describe("State", () => {
       describe("Select tasks by id", () => {
         describe("Should select task by provided id", () => {
           const tasks = getMockedTasks();
-          const state = getState(tasks);
+          const state = getState(tasks) as RootState;
 
           tasks.forEach(({ id }) => {
             it(`Tash id: ${id}`, () => {
@@ -193,7 +195,7 @@ describe("State", () => {
               .join(" -> ")}`;
 
             it(testTitle, () => {
-              const state = getState(orderedTasks);
+              const state = getState(orderedTasks) as RootState;
               const selectorResult = selectAllTasks(state);
               expect(selectorResult).toEqual(getMockedTasks());
             });
@@ -203,13 +205,26 @@ describe("State", () => {
 
       describe("Get tasks by status", () => {
         const tasks = getMockedTasks();
-        const state = getState(tasks);
+        const state = getState(tasks) as RootState;
         Object.values(Status).forEach((status) => {
           it(status, () => {
             const selectorResult = selectTasksWithStatus(status)(state);
 
             expect(selectorResult).toHaveLength(1);
             expect(selectorResult[0].status).toStrictEqual(status);
+          });
+        });
+      });
+
+      describe("Select tasks loading status", () => {
+        [true, false].forEach((isLoading) => {
+          const tasks = getMockedTasks();
+          const state = getState(tasks) as RootState;
+          state.tasks.loading = isLoading;
+
+          it(`Should return loading when it is ${isLoading}`, () => {
+            const selectorResult = selectTasksLoading(state);
+            expect(selectorResult).toStrictEqual(isLoading);
           });
         });
       });

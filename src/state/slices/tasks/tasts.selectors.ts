@@ -8,6 +8,9 @@ const statusOrder = {
   [Status.DONE]: 3,
 } as const;
 
+export const selectTasksLoading = ({ tasks: { loading } }: RootState) =>
+  loading;
+
 export const selectTaskById =
   (taskId: Id) =>
   ({ tasks }: RootState) =>
