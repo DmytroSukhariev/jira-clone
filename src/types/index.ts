@@ -4,7 +4,7 @@ export enum Status {
   DONE = "done",
 }
 
-export type Id = number;
+export type Id = number | string;
 
 export type User = {
   id: Id;
