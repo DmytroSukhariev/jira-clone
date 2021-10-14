@@ -6,5 +6,5 @@ const statusStateMachine = {
   [Status.DONE]: Status.TODO,
 } as const;
 
-export const getNextStatus = (currentStatus: Status) =>
+export const getNextStatus = (currentStatus: Status): Status =>
   statusStateMachine[currentStatus];
