@@ -1,12 +1,17 @@
 import React from "react";
+import _ from "lodash/fp";
 import { ListItem, ListItemAvatar, ListItemText } from "@mui/material";
+
+import { useAppDispatch, setNextTaskState } from "state";
 
 import type { Task as TaskEntity } from "types";
 
 import { UserAvatar } from "ui/components/user-avatar";
-import { statusDisplayNames } from "ui/common";
+import { getStatusDisplayName } from "ui/common";
 
 import { TaskType } from "./task.types";
+
+import "./task.scss";
 
 type TaskProps = {
   task: TaskEntity;
@@ -14,16 +19,26 @@ type TaskProps = {
 };
 
 export const Task: React.FC<TaskProps> = ({ task, taskType }) => {
+  const dispatch = useAppDispatch();
+
+  const handleChangeStatus: () => void = _.flow([
+    () => setNextTaskState(task.id),
+    dispatch,
+  ]);
+
   const isFullTask = taskType === TaskType.FULL;
 
   return (
-    <ListItem>
+    <ListItem className="task" onClick={handleChangeStatus}>
       <ListItemAvatar>
         <UserAvatar userId={task.userId} />
       </ListItemAvatar>
-      <ListItemText primary={task.title} />
+      <ListItemText primary={task.title} className="task-title" />
       {isFullTask ? (
-        <ListItemText primary={statusDisplayNames[task.status]} />
+        <ListItemText
+          primary={getStatusDisplayName(task.status)}
+          className="task-status"
+        />
       ) : null}
     </ListItem>
   );
