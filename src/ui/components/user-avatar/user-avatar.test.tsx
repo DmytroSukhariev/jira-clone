@@ -213,8 +213,9 @@ describe("UI", () => {
             ["Marti Odersky", "MO"],
             ["just_me", "J"],
             ["", ""],
+            [undefined, ""],
           ].forEach(([name, expectedResult]) => {
-            it(`${name} -> ${expectedResult}`, () => {
+            it(`"${name}" -> "${expectedResult}"`, () => {
               const stringAvatarProps = userAvatarUtils.stringAvatar(name);
               expect(stringAvatarProps.children).toStrictEqual(expectedResult);
             });

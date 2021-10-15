@@ -1,1 +1,5 @@
-.jira-page {}
+.jira-page {
+  height: 100vh;
+  overflow: auto;
+  display: flex;
+}
