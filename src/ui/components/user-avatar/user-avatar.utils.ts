@@ -1,26 +1,31 @@
-export const stringToColor = (str: string) => {
-  let hash = 0;
-  let i;
+import ColorHash from "color-hash";
 
-  /* eslint-disable no-bitwise */
-  for (i = 0; i < str.length; i += 1) {
-    hash = str.charCodeAt(i) + ((hash << 5) - hash);
+const sanitizeWhitespaces = (str = "") => {
+  const doubleWhitespaces = "  ";
+  const singleWhitespace = " ";
+
+  let resultString = str;
+
+  while (resultString.includes(doubleWhitespaces)) {
+    resultString = resultString.replaceAll(doubleWhitespaces, singleWhitespace);
   }
 
-  let color = "#";
-
-  for (i = 0; i < 3; i += 1) {
-    const value = (hash >> (i * 8)) & 0xff;
-    color += `00${value.toString(16)}`.substr(-2);
-  }
-  /* eslint-enable no-bitwise */
-
-  return color;
+  return resultString;
 };
 
-export const stringAvatar = (name: string) => ({
-  sx: {
-    bgcolor: stringToColor(name),
-  },
-  children: `${name.split(" ")[0][0]}${name.split(" ")[1][0]}`,
-});
+export const stringAvatar = (name = "") => {
+  const colorHash = new ColorHash();
+
+  // prettier-ignore
+  const [
+    [firstNameFirstLetter = ""] = "",
+    [lastNameFirstLetter = ""] = ""
+  ] = sanitizeWhitespaces(name).split(" ");
+
+  return {
+    sx: {
+      bgcolor: colorHash.hex(name),
+    },
+    children: `${firstNameFirstLetter.toUpperCase()}${lastNameFirstLetter.toUpperCase()}`,
+  };
+};
