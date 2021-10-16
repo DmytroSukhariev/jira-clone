@@ -2,7 +2,7 @@ import React from "react";
 import { Paper, List, Typography, CircularProgress } from "@mui/material";
 import { useSelector } from "react-redux";
 
-import { selectTasksLoading, selectAllTasks } from "state/slices/tasks";
+import { selectTasksLoading, selectAllTasks } from "state";
 
 import { TaskType } from "ui/components/task";
 import { Task } from "ui/components/task";

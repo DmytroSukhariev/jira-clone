@@ -1,5 +1,6 @@
 import { shallow, mount } from "enzyme";
 import { ListItemText } from "@mui/material";
+import { useSelector } from "react-redux";
 
 import { Status, Task as TaskEntity } from "types";
 
@@ -11,6 +12,7 @@ import { getStatusDisplayName } from "ui/common";
 import { Task } from "./task.component";
 import { TaskType } from "./task.types";
 
+jest.mock("react-redux");
 jest.mock("ui/common");
 jest.mock("state");
 
@@ -152,6 +154,13 @@ describe("UI", () => {
     });
 
     describe("Actions", () => {
+      const mockedUser = {};
+      const useSelectorMock = useSelector as jest.Mock;
+
+      beforeEach(() => {
+        useSelectorMock.mockReturnValue(mockedUser);
+      });
+
       it("useAppDispatch mock should be called", () => {
         shallow(getDefaultTaskComponent());
         expect(useAppDispatchMock).toHaveBeenCalled();

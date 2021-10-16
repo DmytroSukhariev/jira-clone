@@ -2,14 +2,16 @@ import { shallow } from "enzyme";
 import { useSelector } from "react-redux";
 import { CircularProgress, List, Paper, Typography } from "@mui/material";
 
-import { selectAllTasks, selectTasksLoading } from "state/slices/tasks";
+import { selectAllTasks, selectTasksLoading } from "state";
 
 import { Status, Task as TaskEntity } from "types";
+
+import { Task, TaskType } from "ui/components/task";
+
 import { TasksList } from "./tasks-list.component";
-import { Task, TaskType } from "../task";
 
 jest.mock("react-redux");
-jest.mock("state/slices/tasks");
+jest.mock("state");
 
 describe("UI", () => {
   const useSelectorMock = useSelector as jest.Mock;

@@ -1,10 +1,12 @@
 import { shallow } from "enzyme";
 import { Container } from "@mui/material";
 
-import { TasksBoard } from "components/tasks-board";
-import { TasksList } from "components/tasks-list";
+import { TasksBoard } from "ui/components/tasks-board";
+import { TasksList } from "ui/components/tasks-list";
 
 import { Jira } from "./jira.component";
+
+jest.mock("react-redux");
 
 describe("Pages", () => {
   describe("<Jira />", () => {
