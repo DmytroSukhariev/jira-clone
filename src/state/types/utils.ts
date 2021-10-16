@@ -1,4 +1,4 @@
-import { Id } from "types";
+import { Id } from "common";
 
 export type EntitiesState<T> = { entities: Record<Id, T> };
 

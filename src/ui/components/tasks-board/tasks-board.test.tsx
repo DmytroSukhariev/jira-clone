@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 
 import { selectTasksLoading } from "state";
 
-import { Status } from "types";
+import { Status } from "common";
 
 import { TasksBoardColumn } from "ui/components/tasks-board-column";
 import { Spinner } from "ui/components/spinner";

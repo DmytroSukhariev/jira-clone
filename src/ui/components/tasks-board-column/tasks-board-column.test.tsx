@@ -1,7 +1,7 @@
 import { shallow } from "enzyme";
 import { useSelector } from "react-redux";
 
-import { Status, Task as TaskEntity } from "types";
+import { Status, Task as TaskEntity } from "common";
 
 import { selectTasksWithStatus } from "state";
 

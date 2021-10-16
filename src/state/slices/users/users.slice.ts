@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 import { getAllUsers } from "apis/jsonplaceholder";
 
-import { User } from "types";
+import { User } from "common";
 
 import { LoadingEntitiesState } from "state/types";
 

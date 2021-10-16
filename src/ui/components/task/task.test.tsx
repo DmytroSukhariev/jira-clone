@@ -2,7 +2,7 @@ import { shallow, mount } from "enzyme";
 import { ListItemText } from "@mui/material";
 import { useSelector } from "react-redux";
 
-import { Status, Task as TaskEntity } from "types";
+import { Status, Task as TaskEntity } from "common";
 
 import { setNextTaskState, useAppDispatch } from "state";
 

@@ -1,4 +1,4 @@
-import { Status, Id } from "types";
+import { Status, Id } from "common";
 
 import type { RootState } from "state/types";
 

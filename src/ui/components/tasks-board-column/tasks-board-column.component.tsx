@@ -2,7 +2,7 @@ import React from "react";
 import { List, Typography } from "@mui/material";
 import { useSelector } from "react-redux";
 
-import { Status } from "types";
+import { Status } from "common";
 
 import { selectTasksWithStatus } from "state";
 

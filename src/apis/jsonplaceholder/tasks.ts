@@ -1,4 +1,4 @@
-import { Task } from "types";
+import { Task } from "common";
 
 import { validateFormatAxiosResponse } from "apis/utils";
 

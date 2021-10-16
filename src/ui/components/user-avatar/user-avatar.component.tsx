@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 
 import { selectUserById, selectUsersLoading } from "state";
 
-import { Id } from "types";
+import { Id } from "common";
 
 import { stringAvatar } from "./user-avatar.utils";
 

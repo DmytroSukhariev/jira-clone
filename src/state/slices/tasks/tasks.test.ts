@@ -3,7 +3,7 @@ import { AnyAction } from "@reduxjs/toolkit";
 
 import { getAllTasks } from "apis/jsonplaceholder";
 import { store } from "state";
-import { Id, Status, Task } from "types";
+import { Id, Status, Task } from "common";
 import { RootState } from "state/types";
 
 import {

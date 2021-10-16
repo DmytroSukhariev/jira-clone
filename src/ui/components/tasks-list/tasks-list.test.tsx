@@ -4,7 +4,7 @@ import { List, Paper, Typography } from "@mui/material";
 
 import { selectAllTasks, selectTasksLoading } from "state";
 
-import { Status, Task as TaskEntity } from "types";
+import { Status, Task as TaskEntity } from "common";
 
 import { Task, TaskType } from "ui/components/task";
 import { Spinner } from "ui/components/spinner";

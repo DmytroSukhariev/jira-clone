@@ -1,8 +1,4 @@
-export enum Status {
-  TODO = "todo",
-  IN_PROGRESS = "inProgress",
-  DONE = "done",
-}
+import { Status } from "./enums";
 
 export type Id = number | string;
 

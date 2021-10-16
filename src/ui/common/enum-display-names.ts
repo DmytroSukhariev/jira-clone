@@ -1,4 +1,4 @@
-import { Status } from "types";
+import { Status } from "common";
 
 const statusDisplayNames = {
   [Status.TODO]: "Todo",

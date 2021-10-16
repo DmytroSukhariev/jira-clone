@@ -4,7 +4,7 @@ import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 import { getAllTasks } from "apis/jsonplaceholder";
 
-import { Task, Id } from "types";
+import { Task, Id } from "common";
 import { LoadingEntitiesState } from "state/types/utils";
 
 import { getNextStatus } from "./tasks.utils";

@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-import { Status } from "types";
+import { Status } from "common";
 
 import { id } from "schemas/common";
 

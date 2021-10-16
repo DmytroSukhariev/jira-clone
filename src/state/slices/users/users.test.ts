@@ -3,7 +3,7 @@ import { Action } from "@reduxjs/toolkit";
 
 import { getAllUsers } from "apis/jsonplaceholder";
 
-import { User } from "types";
+import { User } from "common";
 
 import { store } from "state/store";
 import { RootState } from "state/types";

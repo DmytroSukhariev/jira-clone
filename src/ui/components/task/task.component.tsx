@@ -4,7 +4,7 @@ import { ListItem, ListItemAvatar, ListItemText } from "@mui/material";
 
 import { useAppDispatch, setNextTaskState } from "state";
 
-import type { Task as TaskEntity } from "types";
+import type { Task as TaskEntity } from "common";
 
 import { UserAvatar } from "ui/components/user-avatar";
 import { getStatusDisplayName } from "ui/common";

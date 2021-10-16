@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { Skeleton, Tooltip, Avatar } from "@mui/material";
 import ColorHash from "color-hash";
 
-import { User } from "types";
+import { User } from "common";
 
 import { selectUsersLoading, selectUserById } from "state";
 
