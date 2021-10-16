@@ -1,8 +1,8 @@
 import React from "react";
-
-import { Status } from "types";
 import { List, Typography } from "@mui/material";
 import { useSelector } from "react-redux";
+
+import { Status } from "types";
 
 import { selectTasksWithStatus } from "state";
 
@@ -25,7 +25,7 @@ export const TasksBoardColumn: React.FC<Props> = ({ status }) => {
       </Typography>
       <List className="tasks-board-column-list">
         {tasks.map((task) => (
-          <Task task={task} taskType={TaskType.SHORT} />
+          <Task key={task.id} task={task} taskType={TaskType.SHORT} />
         ))}
       </List>
     </div>
