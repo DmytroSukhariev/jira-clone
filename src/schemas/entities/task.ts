@@ -4,7 +4,7 @@ import { Status } from "common";
 
 import { id } from "schemas/common";
 
-export const taskSchema = () =>
+export const taskSchema = (): z.SomeZodObject =>
   z.object({
     id: id(),
     userId: id(),

@@ -1,4 +1,4 @@
-import { Status, Id } from "common";
+import { Status, Id, Task } from "common";
 
 import type { RootState } from "state/types";
 
@@ -8,21 +8,22 @@ const statusOrder = {
   [Status.DONE]: 3,
 } as const;
 
-export const selectTasksLoading = ({ tasks: { loading } }: RootState) =>
-  loading;
+export const selectTasksLoading = ({
+  tasks: { loading },
+}: RootState): boolean => loading;
 
 export const selectTaskById =
   (taskId: Id) =>
-  ({ tasks }: RootState) =>
+  ({ tasks }: RootState): Task =>
     tasks.entities[taskId];
 
-export const selectAllTasks = ({ tasks }: RootState) =>
+export const selectAllTasks = ({ tasks }: RootState): Array<Task> =>
   Object.values(tasks.entities).sort(
     ({ status: statusA }, { status: statusB }) =>
-      statusOrder[statusA] - statusOrder[statusB]
+      statusOrder[statusA as Status] - statusOrder[statusB as Status]
   );
 
 export const selectTasksWithStatus =
   (status: Status) =>
-  ({ tasks }: RootState) =>
+  ({ tasks }: RootState): Array<Task> =>
     Object.values(tasks.entities).filter((task) => task.status === status);

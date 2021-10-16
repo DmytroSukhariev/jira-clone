@@ -1,6 +1,6 @@
 import ColorHash from "color-hash";
 
-const sanitizeWhitespaces = (str = "") => {
+const sanitizeWhitespaces = (str = ""): string => {
   const doubleWhitespaces = "  ";
   const singleWhitespace = " ";
 
@@ -13,7 +13,9 @@ const sanitizeWhitespaces = (str = "") => {
   return resultString;
 };
 
-export const stringAvatar = (name = "") => {
+export const stringAvatar = (
+  name = ""
+): { sx: { bgcolor: string }; children: string } => {
   const colorHash = new ColorHash();
 
   // prettier-ignore
