@@ -1,11 +1,11 @@
 import React from "react";
-import { Paper, List, Typography, CircularProgress } from "@mui/material";
+import { Paper, List, Typography } from "@mui/material";
 import { useSelector } from "react-redux";
 
 import { selectTasksLoading, selectAllTasks } from "state";
 
-import { TaskType } from "ui/components/task";
-import { Task } from "ui/components/task";
+import { TaskType, Task } from "ui/components/task";
+import { Spinner } from "ui/components/spinner";
 
 import "./tasks-list.scss";
 
@@ -17,7 +17,7 @@ export const TasksList: React.FC = () => {
     <Paper className="tasks-list-wrapper">
       <Typography variant="h3">Ticket list</Typography>
       {isTasksLoading ? (
-        <CircularProgress />
+        <Spinner />
       ) : (
         <List className="tasks-list">
           {tasks.map((task) => (

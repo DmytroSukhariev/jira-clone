@@ -1,3 +1,5 @@
+@use "sass:math";
+
 $scroller-width: 6px;
 ::-webkit-scrollbar {
   width: $scroller-width;
@@ -5,7 +7,7 @@ $scroller-width: 6px;
 
 ::-webkit-scrollbar-thumb {
   background-color: darkgrey;
-  border-radius: $scroller-width / 2;
+  border-radius: math.div($scroller-width, 2);
   background-color: rgba(90 90 90 / 50%);
 }
 

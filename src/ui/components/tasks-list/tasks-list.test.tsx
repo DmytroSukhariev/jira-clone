@@ -1,12 +1,13 @@
 import { shallow } from "enzyme";
 import { useSelector } from "react-redux";
-import { CircularProgress, List, Paper, Typography } from "@mui/material";
+import { List, Paper, Typography } from "@mui/material";
 
 import { selectAllTasks, selectTasksLoading } from "state";
 
 import { Status, Task as TaskEntity } from "types";
 
 import { Task, TaskType } from "ui/components/task";
+import { Spinner } from "ui/components/spinner";
 
 import { TasksList } from "./tasks-list.component";
 
@@ -63,18 +64,18 @@ describe("UI", () => {
       });
 
       describe("Loader", () => {
-        it("Should render <CircularProgress /> if tasks are loading", () => {
+        it("Should render <Spinner /> if tasks are loading", () => {
           selectTasksLoadingMock.mockReturnValue(true);
 
-          const loader = shallow(<TasksList />).find(CircularProgress);
+          const loader = shallow(<TasksList />).find(Spinner);
 
           expect(loader).toHaveLength(1);
         });
 
-        it("Should not render <CircularProgress /> if tasks are loading", () => {
+        it("Should not render <Spinner /> if tasks are loading", () => {
           selectTasksLoadingMock.mockReturnValue(false);
 
-          const loader = shallow(<TasksList />).find(CircularProgress);
+          const loader = shallow(<TasksList />).find(Spinner);
 
           expect(loader).toHaveLength(0);
         });

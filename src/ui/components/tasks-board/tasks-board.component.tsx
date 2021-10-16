@@ -1,5 +1,5 @@
 import React from "react";
-import { CircularProgress, Paper, Typography } from "@mui/material";
+import { Paper, Typography } from "@mui/material";
 import { useSelector } from "react-redux";
 
 import { selectTasksLoading } from "state";
@@ -7,6 +7,7 @@ import { selectTasksLoading } from "state";
 import { Status } from "types";
 
 import { TasksBoardColumn } from "ui/components/tasks-board-column";
+import { Spinner } from "ui/components/spinner";
 
 import "./tasks-board.scss";
 
@@ -17,7 +18,7 @@ export const TasksBoard: React.FC = () => {
     <Paper className="tasks-board-wrapper">
       <Typography variant="h3">Board</Typography>
       {isLoading ? (
-        <CircularProgress />
+        <Spinner />
       ) : (
         <div className="tasks-board">
           <TasksBoardColumn status={Status.TODO} />
