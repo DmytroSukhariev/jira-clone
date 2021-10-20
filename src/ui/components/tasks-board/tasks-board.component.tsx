@@ -21,9 +21,9 @@ export const TasksBoard: React.FC = () => {
         <Spinner />
       ) : (
         <div className="tasks-board">
-          <TasksBoardColumn status={Status.TODO} />
-          <TasksBoardColumn status={Status.IN_PROGRESS} />
-          <TasksBoardColumn status={Status.DONE} />
+          <TasksBoardColumn key={Status.TODO} status={Status.TODO} />
+          <TasksBoardColumn key={Status.TODO} status={Status.IN_PROGRESS} />
+          <TasksBoardColumn key={Status.TODO} status={Status.DONE} />
         </div>
       )}
     </Paper>
