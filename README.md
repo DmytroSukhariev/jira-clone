@@ -19,7 +19,7 @@ npm test
 - UI
   - React
   - MUI
-- AI integration
+- API integration
   - Axios
   - zod (api response validation)
 - State
