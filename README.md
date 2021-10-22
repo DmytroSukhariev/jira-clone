@@ -2,17 +2,17 @@
 
 ### Project setup
 ```
-npm i
+yarn
 ```
 
 ### Project start up
 ```
-npm start
+yarn start
 ```
 
 ### Tests run
 ```
-npm test
+yarn test
 ```
 
 ### Technology stack
